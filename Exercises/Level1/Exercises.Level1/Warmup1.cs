@@ -18,7 +18,7 @@ public class Warmup1
     /// </summary>
     public bool SleepIn(bool weekday, bool vacation)
     {
-        throw new NotImplementedException();
+        return !weekday || vacation;
     }
 
     /// <summary>
@@ -33,7 +33,7 @@ public class Warmup1
     /// </summary>
     public bool MonkeyTrouble(bool aSmile, bool bSmile)
     {
-        throw new NotImplementedException();
+        return (aSmile && bSmile) || (!aSmile && !bSmile);
     }
 
     /// <summary>
@@ -46,7 +46,16 @@ public class Warmup1
     /// </summary>
     public int SumDouble(int a, int b)
     {
-        throw new NotImplementedException();
+        int sum = 0;
+        if (a == b)
+        {
+            sum = (a + b) * 2;
+        }
+        else
+        {
+            sum = a + b;
+        }
+        return sum;
     }
 
     /// <summary>
@@ -59,11 +68,19 @@ public class Warmup1
     /// </summary>
     public int Diff21(int n)
     {
-        throw new NotImplementedException();
+        if (n > 21)
+        {
+            return Math.Abs(n-21)*2;
+        }
+        else
+        {
+            return Math.Abs(n - 21);
+        }
     }
 
     /// <summary>
-    /// We have a loud talking parrot. The "hour" parameter is the current hour time in the range 0..23. We are in trouble if the parrot is talking and the hour is before 7 or after 20. Return true if we are in trouble.
+    /// We have a loud talking parrot. The "hour" parameter is the current hour time in the range 0..23. We are in trouble if the 
+    /// parrot is talking and the hour is before 7 or after 20. Return true if we are in trouble.
     /// 
     /// parrotTrouble(true, 6) → true
     /// parrotTrouble(true, 7) → false
@@ -71,7 +88,7 @@ public class Warmup1
     /// </summary>
     public bool ParrotTrouble(bool talking, int hour)
     {
-        throw new NotImplementedException();
+        return talking && (hour < 7 || hour > 20);
     }
 
     /// <summary>
@@ -83,7 +100,7 @@ public class Warmup1
     /// </summary>
     public bool Makes10(int a, int b)
     {
-        throw new NotImplementedException();
+        return a == 10 || b == 10 || a + b == 10;
     }
 
     /// <summary>
@@ -95,7 +112,7 @@ public class Warmup1
     /// </summary>
     public bool NearHundred(int n)
     {
-        throw new NotImplementedException();
+        return (n >= 90 && n <= 110) || (n >= 190 && n <= 210);
     }
 
     /// <summary>
@@ -108,7 +125,8 @@ public class Warmup1
     /// </summary>
     public bool PosNeg(int a, int b, bool negative)
     {
-        throw new NotImplementedException();
+        return ((a < 0 && b > 0) || (b < 0 && a > 0)) && !negative || (negative && a < 0 && b < 0);
+    
     }
 
     /// <summary>
@@ -121,7 +139,14 @@ public class Warmup1
     /// </summary>
     public string NotString(string str)
     {
-        throw new NotImplementedException();
+        if (str.Length >= 3 && str.Substring(0, 3).Equals("not"))
+        {
+            return str;
+        }
+        else
+        {
+            return "not " + str;
+        }
     }
 
     /// <summary>
@@ -133,8 +158,8 @@ public class Warmup1
     /// missingChar("kitten", 4) → "kittn"
     /// </summary>
     public string MissingChar(string str, int n)
-    {
-        throw new NotImplementedException();
+    {        
+        return str.Remove(n, 1);
     }
 
     /// <summary>
@@ -146,7 +171,24 @@ public class Warmup1
     /// </summary>
     public string FrontBack(string str)
     {
-        throw new NotImplementedException();
+        char[] chars = str.ToCharArray();
+
+        if (chars.Length > 1)
+        {
+            char firstChar = chars[0];
+            char lastChar = chars[chars.Length - 1];
+
+            chars[0] = lastChar;
+            chars[chars.Length - 1] = firstChar;
+            string newstring = new string(chars);
+
+            return newstring;
+        }
+        else
+        {
+            return str;
+        }
+
     }
 
     /// <summary>
@@ -184,7 +226,7 @@ public class Warmup1
     /// </summary>
     public bool Or35(int n)
     {
-        throw new NotImplementedException();
+        return n % 3 == 0 || n % 5 == 0;
     }
 
     /// <summary>
@@ -209,7 +251,13 @@ public class Warmup1
     /// </summary>
     public bool StartHi(string str)
     {
-        throw new NotImplementedException();
+        if(str.Length > 1)
+        {
+            return str.Substring(0, 2) == "hi";
+        }
+
+        return false;
+        
     }
 
     /// <summary>
@@ -221,7 +269,7 @@ public class Warmup1
     /// </summary>
     public bool IcyHot(int temp1, int temp2)
     {
-        throw new NotImplementedException();
+        return (temp1 < 0 && temp2 > 100) || (temp2 < 0 && temp1 > 100);
     }
 
     /// <summary>
@@ -233,7 +281,7 @@ public class Warmup1
     /// </summary>
     public bool In1020(int a, int b)
     {
-        throw new NotImplementedException();
+        return (a>=10 && a <=20) || (b>=10 && b <=20);
     }
 
     /// <summary>
@@ -246,9 +294,8 @@ public class Warmup1
     /// </summary>
     public bool HasTeen(int a, int b, int c)
     {
-        throw new NotImplementedException();
+        return (a >= 13 && a <= 19) || (b >= 13 && b <= 19) || (c >= 13 && c <= 19);
     }
-
     /// <summary>
     /// We'll say that a number is "teen" if it is in the range 13..19 inclusive. Given 2 int values, return true if one or the other is teen, but not both.
     /// 
@@ -256,13 +303,14 @@ public class Warmup1
     /// loneTeen(21, 19) → true
     /// loneTeen(13, 13) → false
     /// </summary>
-    public bool LoneTeen(int a, int b)
+        public bool LoneTeen(int a, int b)
     {
-        throw new NotImplementedException();
+        return (!(a >= 13 && a <= 19) && (b >= 13 && b <= 19)) || ((a >= 13 && a <= 19) && !(b >= 13 && b <= 19));
     }
 
     /// <summary>
-    /// Given a string, if the string "del" appears starting at index 1, return a string where that "del" has been deleted. Otherwise, return the string unchanged.
+    /// Given a string, if the string "del" appears starting at index 1, return a string where that "del" has been deleted. 
+    /// Otherwise, return the string unchanged.
     /// 
     /// delDel("adelbc") → "abc"
     /// delDel("adelHello") → "aHello"
@@ -306,7 +354,7 @@ public class Warmup1
     /// </summary>
     public int IntMax(int a, int b, int c)
     {
-        throw new NotImplementedException();
+        return Math.Max(a, Math.Max(b, c));
     }
 
     /// <summary>
@@ -319,7 +367,23 @@ public class Warmup1
     /// </summary>
     public int Close10(int a, int b)
     {
-        throw new NotImplementedException();
+        int calcVal1 = Math.Abs(a - 10);
+        int calcVal2 = Math.Abs(b - 10);
+
+        if(calcVal1 == calcVal2)
+        {
+            return 0;
+        }
+
+        if (calcVal1 < calcVal2)
+        {
+            return a;
+        }
+        else
+        {
+            return b;
+        }
+       
     }
 
     /// <summary>
@@ -331,7 +395,7 @@ public class Warmup1
     /// </summary>
     public bool In3050(int a, int b)
     {
-        throw new NotImplementedException();
+       return ((a >= 30 && a <= 40) && (b >= 30 && b <= 40)) || ((a >= 40 && a <= 50) && (b >= 40 && b <= 50));
     }
 
     /// <summary>
@@ -343,7 +407,20 @@ public class Warmup1
     /// </summary>
     public int Max1020(int a, int b)
     {
-        throw new NotImplementedException();
+        if ((a >=10 && a <= 20) || (b >=10 && b <= 20))
+        {
+            return Math.Max(a, b);
+        }
+        else if ((a >= 10 && a <= 20) || !(b >= 10 && b <= 20))
+        {
+            return a;
+        }
+        else if (!(a >= 10 && a <= 20) || (b >= 10 && b <= 20))
+        {
+            return b;
+        }
+
+        return 0;
     }
 
     /// <summary>
