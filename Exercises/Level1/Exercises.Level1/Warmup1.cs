@@ -428,7 +428,7 @@ public class Warmup1
     /// 
     /// stringE("Hello") → true
     /// stringE("Heelle") → true
-    /// stringE("Heelele") → false
+    /// stringE("Heelele") → false  
     /// </summary>
     public bool StringE(string str)
     {
